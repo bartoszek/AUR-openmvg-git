@@ -48,7 +48,7 @@ build() {
         -DCMAKE_BUILD_TYPE=RELEASE \
         -DOpenMVG_BUILD_SHARED=ON \
         -DOpenMVG_BUILD_EXAMPLES=ON \
-         -DOpenMVG_BUILD_OPENGL_EXAMPLES=ON \
+        -DOpenMVG_BUILD_OPENGL_EXAMPLES=ON \
         -DOpenMVG_USE_OPENMP=ON \
         -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin \
         -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin \
