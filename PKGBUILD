@@ -5,7 +5,7 @@
 pkgname=openmvg-git
 _gitname='openMVG'
 _fragment="#branch=develop"
-pkgver=2.0.r43.gfe8283c8
+pkgver=2.0.r110.g4e78ed73
 pkgrel=1
 pkgdesc='open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.'
 arch=('i686' 'x86_64')
@@ -15,18 +15,12 @@ options=('!emptydirs')
 depends=(qt5-{base,svg} 'cereal' 'glfw' 'lz4' 'libpng' 'libjpeg' 'libtiff' 'libxcursor' 'libxinerama' 'libxrandr' 'libxxf86vm' 'libxi' 'graphviz' 'libgl' 'ceres-solver' 'gflags' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-osi' 'coin-or-lemon')
 makedepends=('git' 'cmake' 'doxygen' 'eigen')
 source=("git+https://github.com/${_gitname}/${_gitname}.git${_fragment}"
-        'findflann-v0.1.patch'
-        'submodule.patch'
        )
 sha256sums=('SKIP'
-            '13b1f0195b5e97c17eec737e63f4da69c501bb4ced28c4c14517440009139043'
-            '5dcde15464d0b457f0149fff2088f33e59f9c43a2aba9d2351538a0a5fce739d'
             'SKIP'
             'SKIP'
             'SKIP')
 b2sums=('SKIP'
-        'f70e6c4d3368d170d8c182511e1b2ee9aa76ff6495fee6f50fcfbcc432f2c330d4c84868a536df605e0c630b81d024ac0bdd48124d7ad1c4f8ff9114a1850854'
-        '688cd6f2ce02448bd75001c509b68f9265496abf0c6b00a46c373e3a6c337f5e24d4d6d3ce8cec3801fd823a076f1de68733edb0ae0283920aea16889c4299e1'
         'SKIP'
         'SKIP'
         'SKIP')
@@ -37,8 +31,6 @@ pkgver() {
 
 prepare() {
   prepare_submodule
-  cd "${srcdir}/${_gitname}"
-  git apply "${srcdir}"/{findflann-v0.1,submodule}.patch
 }
 
 build() {
