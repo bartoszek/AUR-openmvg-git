@@ -45,9 +45,7 @@ build() {
         -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin \
         -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin \
         -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon \
-        -DCERES_DIR_HINTS=/usr/include/ceres \
-        -DEIGEN_INCLUDE_DIR_HINTS=/usr/include/eigen3 \
-        -DFLANN_INCLUDE_DIR_HINTS=/usr/include/flann
+        -DCERES_DIR_HINTS=/usr/include/ceres
   make -C build
 }
 
