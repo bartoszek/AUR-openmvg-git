@@ -15,29 +15,29 @@ options=('!emptydirs')
 depends=(qt5-{base,svg} 'cereal' 'glfw' 'lz4' 'libpng' 'libjpeg' 'libtiff' 'libxcursor' 'libxinerama' 'libxrandr' 'libxxf86vm' 'libxi' 'graphviz' 'libgl' 'ceres-solver' 'gflags' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-osi' 'coin-or-lemon')
 makedepends=('git' 'cmake' 'doxygen' 'eigen')
 source=("git+https://github.com/${_gitname}/${_gitname}.git${_fragment}"
-        'git+https://github.com/elmindreda/glfw.git'
         'findflann-v0.1.patch'
         'submodule.patch'
        )
 sha256sums=('SKIP'
-            'SKIP'
             '13b1f0195b5e97c17eec737e63f4da69c501bb4ced28c4c14517440009139043'
             '5dcde15464d0b457f0149fff2088f33e59f9c43a2aba9d2351538a0a5fce739d'
-            '5dcde15464d0b457f0149fff2088f33e59f9c43a2aba9d2351538a0a5fce739d')
+            'SKIP'
+            'SKIP'
+            'SKIP')
 b2sums=('SKIP'
-        'SKIP'
         'f70e6c4d3368d170d8c182511e1b2ee9aa76ff6495fee6f50fcfbcc432f2c330d4c84868a536df605e0c630b81d024ac0bdd48124d7ad1c4f8ff9114a1850854'
         '688cd6f2ce02448bd75001c509b68f9265496abf0c6b00a46c373e3a6c337f5e24d4d6d3ce8cec3801fd823a076f1de68733edb0ae0283920aea16889c4299e1'
-        '688cd6f2ce02448bd75001c509b68f9265496abf0c6b00a46c373e3a6c337f5e24d4d6d3ce8cec3801fd823a076f1de68733edb0ae0283920aea16889c4299e1')
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 pkgver() {
   git -C "${srcdir}/${_gitname}" describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
+  prepare_submodule
   cd "${srcdir}/${_gitname}"
-  git config 'submodule.src/dependencies/glfw.url' "${srcdir}/glfw"
-  git -c protocol.file.allow=always submodule update --init --remote src/dependencies/glfw
   git apply "${srcdir}"/{findflann-v0.1,submodule}.patch
 }
 
@@ -63,4 +63,18 @@ package() {
   make -C build DESTDIR="$pkgdir" install
 }
 
+# Generated with git_submodule_PKGBUILD_conf.sh ( https://gist.github.com/bartoszek/41a3bfb707f1b258de061f75b109042b )
+# Call prepare_submodule in prepare() function
+
+prepare_submodule() {
+  git -C "$srcdir/openMVG" config submodule.src/dependencies/glfw.url "$srcdir/glfw"
+  git -C "$srcdir/openMVG" config submodule.src/dependencies/osi_clp.url "$srcdir/osi_clp"
+  git -C "$srcdir/openMVG" config submodule.src/dependencies/cereal.url "$srcdir/cereal"
+  git -C "$srcdir/openMVG" -c protocol.file.allow=always submodule update --init
+}
+source+=(
+  "glfw::git+https://github.com/elmindreda/glfw"
+  "osi_clp::git+https://github.com/openMVG-thirdparty/osi_clp"
+  "cereal::git+https://github.com/openMVG-thirdparty/cereal"
+)
 # vim:set ts=2 sw=2 et:

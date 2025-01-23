@@ -34,16 +34,22 @@ pkgbase = openmvg-git
 	depends = coin-or-lemon
 	options = !emptydirs
 	source = git+https://github.com/openMVG/openMVG.git#branch=develop
-	source = git+https://github.com/elmindreda/glfw.git
 	source = findflann-v0.1.patch
 	source = submodule.patch
-	sha256sums = SKIP
+	source = glfw::git+https://github.com/elmindreda/glfw
+	source = osi_clp::git+https://github.com/openMVG-thirdparty/osi_clp
+	source = cereal::git+https://github.com/openMVG-thirdparty/cereal
 	sha256sums = SKIP
 	sha256sums = 13b1f0195b5e97c17eec737e63f4da69c501bb4ced28c4c14517440009139043
 	sha256sums = 5dcde15464d0b457f0149fff2088f33e59f9c43a2aba9d2351538a0a5fce739d
-	b2sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	b2sums = SKIP
 	b2sums = f70e6c4d3368d170d8c182511e1b2ee9aa76ff6495fee6f50fcfbcc432f2c330d4c84868a536df605e0c630b81d024ac0bdd48124d7ad1c4f8ff9114a1850854
 	b2sums = 688cd6f2ce02448bd75001c509b68f9265496abf0c6b00a46c373e3a6c337f5e24d4d6d3ce8cec3801fd823a076f1de68733edb0ae0283920aea16889c4299e1
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = openmvg-git
