@@ -5,7 +5,7 @@
 pkgname=openmvg-git
 _gitname='openMVG'
 _fragment="#branch=develop"
-pkgver=2.0.r110.g4e78ed73
+pkgver=2.0.r114.gc92ed1be
 pkgrel=1
 pkgdesc='open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.'
 arch=('i686' 'x86_64')
@@ -47,11 +47,11 @@ build() {
         -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin \
         -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon \
         -DCERES_DIR_HINTS=/usr/include/ceres
-  make -C build
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir"  cmake --install build
 }
 
 # Generated with git_submodule_PKGBUILD_conf.sh ( https://gist.github.com/bartoszek/41a3bfb707f1b258de061f75b109042b )
