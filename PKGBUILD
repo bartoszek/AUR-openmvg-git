@@ -35,6 +35,7 @@ prepare() {
 
 build() {
   cmake -S "${srcdir}/${_gitname}"/src -B build \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RELEASE \
         -DOpenMVG_BUILD_SHARED=ON \
