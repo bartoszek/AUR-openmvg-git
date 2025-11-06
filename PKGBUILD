@@ -13,7 +13,7 @@ url='http://imagine.enpc.fr/~moulonp/openMVG/'
 license=('MPL')
 options=('!emptydirs')
 depends=(qt5-{base,svg} 'cereal' 'glfw' 'lz4' 'libpng' 'libjpeg' 'libtiff' 'libxcursor' 'libxinerama' 'libxrandr' 'libxxf86vm' 'libxi' 'graphviz' 'libgl' 'ceres-solver' 'gflags' 'flann' 'coin-or-coinutils' 'coin-or-clp' 'coin-or-osi' 'coin-or-lemon')
-makedepends=('git' 'cmake' 'doxygen' 'eigen')
+makedepends=('git' 'cmake' 'doxygen' 'eigen3')
 source=("git+https://github.com/${_gitname}/${_gitname}.git${_fragment}"
        )
 sha256sums=('SKIP'
